@@ -1,6 +1,6 @@
-* xref:module-01.adoc[1. RPM Native Container]
-** xref:module-01.adoc#repositories[Repositories]
-** xref:module-01.adoc#software[Software]
+* xref:module-01.adoc[1. Setting up you LlamaStack Servers]
+** xref:module-01.adoc#ollama_setup[Local Ollama Intro]
+** xref:module-01.adoc#llamastack_local_server[Setting up your first LLamaStack Server]
 
 * xref:module-02.adoc[2. GitHub Sourced Container]
 ** xref:module-02.adoc#prerequisites[Install Prerequisites]

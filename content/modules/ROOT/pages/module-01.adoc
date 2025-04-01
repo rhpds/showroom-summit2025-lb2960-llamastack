@@ -1,149 +1,98 @@
-= Building an Application with rpms
+= Exploring your local environment
 
-== Downloading the UBI
 
-In this lab, you will be installing software into the container 
-image running as an interactive application. To do this you will
-need `yum`, but do not need `systemd` for managing services within the
-container environment.  For that reason, you will be using the *Standard*
-UBI image (as opposed to the Minimal or Multi-service images).
+In this Module, we will deploy a Llama-Stack Server, a powerful platform designed to simplify and streamline your development workflow. 
 
-Using the "buildah from" command will download and meld the container image. This particular image we are using is the Red Hat Universal Base Image or UBI. From the ourput of the command, you will notice that we are pulling down the latest one, which is for RHEL 9. 
+We will take you through the process of setting up our first Llama-Stack Server instance, leveraging the Ollama Local LLM server for seamless local development. By the end of this segment, you will gain hands-on experience with the basics of Llama-Stack Server and be equipped to tackle more complex tasks in subsequent lab segments.
 
-. Execute the  download the Standard UBI
-image from Red Hat's registry.
+Throughout this Module, we will cover essential topics such as:
 
+* Setting up the Ollama Local LLM server
+* Configuring the Llama-Stack Server instance
+* Exploring core features and functionality
+
+Let's dive into the world of Llama-Stack Server and get started with our first instance!
+
+
+[#ollama_setup]
+== Local LLM Development with Ollama
+
+In this lab, you will be setting up your own local Large Language Model (LLM) server using Ollama. This approach allows you to experiment with AI coding assistance without relying on external cloud services, giving you full control over your AI environment.
+
+Ollama provides a simple way to run various open-source large language models on your local machine. We have taken the libery to install ollama server for you and download a few models to save you time. 
+
+Let's do a quick walkthrough of our environment to understand what's available:
+
+. Run the `ollama list` command to display the models available locally:
 +
 [source,sh,role=execute]
 ----
-buildah from registry.access.redhat.com/ubi9/ubi
+ollama list
 ----
-
-[#repositories]
-== Installing Repositories
-In this lab, you are going to containerize a software package that is already
-packaged in RPM format and stored in the Extra Packages for Enterprise Linux
-(EPEL) repository.
-
-Software often has requirements for prerequisite software that must be installed
-on the machine for it to work properly.  `yum` will resolve those
-dependencies for you, as long as it can locate the required packages in
-repositories defined on the machine.  The Red Hat Universal Base Image (UBI)
-downloaded in the previous step has access to some Red Hat Enterprise Linux
-repositories.  However, the target package for the lab is from EPEL.  
-
-. In the command below, `buildah` is going to run a command on the
-`ubi-working-container` image.  The `--` indicates that the command should be
-executed from within the container, which means the results will be applied into
-the container image.  Lastly, you are providing the `yum` command to install a
-package that defines all of the repositories from EPEL, `epel-release-latest-9`.
-
 +
-[source,bash]
-----
-buildah run ubi-working-container -- yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
-----
-
-
-. You can verify that the above command did not install the RPM on the host system.
-
-+
-[source,bash]
-----
-rpm -q epel-release
-----
-
-NOTE: If your repository configurations are not distributed as an RPM, but instead as
-individual `.repo` files, you could use the `buildah copy` command to copy
-files from the host operating system into the container image.  You will see
-an example of using `buildah copy` later in this lab.
-
-[#software]
-== Installing Software
-
-
-. Now that the yum repositories are defined within the container, execute 
-another `yum install`, within the container, to install the target
-software: `moon-buggy`.
-
-+
-[source,bash]
-----
-buildah run ubi-working-container -- yum -y install moon-buggy
-----
-
-
-== Committing the Container Image
-
-. At this point, the container is configured.  It is time to transition from a
-working container into a committed image.  In the command below, you will use
-the `buildah` command to commit the working container to an image called:
-`moon-buggy`.
-
-+
-[source,bash]
-----
-buildah commit ubi-working-container moon-buggy
-----
-
-+
-. The output of `podman image list` should confirm the image was created.
-
-+
-[source,bash]
-----
-podman image list
-----
-
-
-== Deploy the Container
-
-Now the software has been installed and a new container image created.  It is
-time to spawn a runtime of the container image and validate the software.  The
-software we are using is a command line command.  
-
-. When you `run` the container,
-it will be in interactive (`-it`) mode, based on the `moon-buggy` container
-image and the command run interactively will be `/usr/bin/moon-buggy`.
-
-+
-[source,bash]
-----
-podman run -it moon-buggy /usr/bin/moon-buggy
-----
-
+* You should see a list of models that are already downloaded and available for use.
 +
 [source,textinfo]
 ----
-
-<<< OUTPUT ABRIDGED >>>
-               MM     MM   OOOOO    OOOOO   NN     N
-               M M   M M  O     O  O     O  N N    N
-               M  M M  M  O     O  O     O  N  N   N
-               M   M   M  O     O  O     O  N   N  N
-               M       M  O     O  O     O  N    N N
-               M       M   OOOOO    OOOOO   N     NN
-
-                     BBBBBB   U     U   GGGGG    GGGGG   Y     Y
-                     B     B  U     U  G     G  G     G   Y   Y
-                     BBBBBB   U     U  G        G          Y Y
-                     B     B  U     U  G   GGG  G   GGG     Y
-                     B     B  U     U  G     G  G     G    Y
-                     BBBBBB    UUUUU    GGGGG    GGGGG   YY
-
-<<< OUTPUT ABRIDGED >>>
+[dev@dev ~]$ ollama list
+NAME                 ID              SIZE      MODIFIED    
+granite3.2:latest    9bcb3335083f    4.9 GB    2 hours ago  
 ----
 
-. You can now play the Moon Buggy game, which is a text-based version of the
-popular Moon Patrol.  When you are finished, use the `q` command to quit the
-game, which will terminate the container.
-
+. Let's pull down the "ollama pull llama3.2:3b-instruct-fp16" model with the `ollama pull` command:
 +
-Alternatively, you can use `podman` to kill the running container from
-*Terminal 2*.
-
+[source,sh,role=execute]
+----
+ollama pull llama3.2:3b-instruct-fp16
+----
 +
-[source,bash]
+* You should see the model being pulled down, that might take a moment:
++
+[source,textinfo]
 ----
-podman kill $(podman ps | grep -v CONTAINER | cut -f1 -d" " )
+[dev@dev ~]$ ollama pull llama3.2:3b-instruct-fp16
+> 
+pulling manifest 
+pulling e2f46f5b501c... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏ 6.4 GB                         
+pulling 966de95ca8a6... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏ 1.4 KB                         
+pulling fcc5a6bec9da... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏ 7.7 KB                         
+pulling a70ff7e570d9... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏ 6.0 KB                         
+pulling 56bb8bd477a5... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏   96 B                         
+pulling 1bc315994ceb... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏  558 B                         
+verifying sha256 digest 
+writing manifest 
+success 
 ----
+
+. Running `ollama run {Model_name}` command will let us interact with our LLM on the command line, the `--keepalive 60m` will make sure the model stays loaded, this is important for us as we plan to use this model throughout the lab.
++
+[source,sh,role=execute]
+----
+ollama run llama3.2:3b-instruct-fp16 --keepalive 60m
+----
++
+* Ask the model a question or two, and type `/bye` or CTRL+D to exist the chat 
+
+[#llamastack_local_server]
+== Setting up your first LLamaStack Server
+
+
+//TODO: Note to Tony, It's slick to have variables, but for the student, is it better to just have a single command?
+
+export LLAMA_STACK_MODEL="meta-llama/Llama-3.2-3B-Instruct"
+export INFERENCE_MODEL="meta-llama/Llama-3.2-3B-Instruct"
+export LLAMA_STACK_PORT=8321
+export LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT
+export LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.1.9"
+//TODO: Need to lock this down the the version we want, and have it ready in our registry (also, pre-loaded in the VM maybe)
+docker pull llamastack/distribution-ollama:0.1.9
+
+//TODO: removed this line from the podman command: "  -v ~/.llama:/root/.llama \" do we need it?
+podman run -it \
+  -p $LLAMA_STACK_PORT:$LLAMA_STACK_PORT \
+  $LLAMA_SERVER_CONTAINER_IMAGE \
+  --port $LLAMA_STACK_PORT \
+  --env INFERENCE_MODEL=$LLAMA_STACK_MODEL \
+  --env OLLAMA_URL=http://host.containers.internal:11434
+
+
