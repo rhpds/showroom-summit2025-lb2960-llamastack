@@ -73,26 +73,139 @@ ollama run llama3.2:3b-instruct-fp16 --keepalive 60m
 +
 * Ask the model a question or two, and type `/bye` or CTRL+D to exist the chat 
 
+
 [#llamastack_local_server]
 == Setting up your first LLamaStack Server
 
+//TODO: Write pretty words about llamastacks server
 
 //TODO: Note to Tony, It's slick to have variables, but for the student, is it better to just have a single command?
 
-export LLAMA_STACK_MODEL="meta-llama/Llama-3.2-3B-Instruct"
+. Let's create some variables that will make the install easier, you can hard code your commands, but this makes them easy to remember and change when you create lots of these in the future:
++
+[source,sh,role=execute]
+----
 export INFERENCE_MODEL="meta-llama/Llama-3.2-3B-Instruct"
 export LLAMA_STACK_PORT=8321
 export LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT
 export LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.1.9"
+export CONTAINER_NAME="llamastack-ollama-llama3.2-3b-instruct"
+export OLLAMA_PORT=11434
+----
+//TODO: Create a quick callout note explaining what each of the variables mean
 //TODO: Need to lock this down the the version we want, and have it ready in our registry (also, pre-loaded in the VM maybe)
-docker pull llamastack/distribution-ollama:0.1.9
 
-//TODO: removed this line from the podman command: "  -v ~/.llama:/root/.llama \" do we need it?
-podman run -it \
-  -p $LLAMA_STACK_PORT:$LLAMA_STACK_PORT \
-  $LLAMA_SERVER_CONTAINER_IMAGE \
-  --port $LLAMA_STACK_PORT \
-  --env INFERENCE_MODEL=$LLAMA_STACK_MODEL \
-  --env OLLAMA_URL=http://host.containers.internal:11434
+. Run the container using the `podman run` command:
++
+[source,sh,role=execute]
+----
+podman run -d \
+    --name $CONTAINER_NAME \
+    --network=host \
+    $LLAMA_SERVER_CONTAINER_IMAGE \
+    --port $LLAMA_STACK_PORT \
+    --env INFERENCE_MODEL="$INFERENCE_MODEL" \
+    --env OLLAMA_URL=http://localhost:$OLLAMA_PORT
+----
+    
+. Let's watch the container load and see that it is running succesfully 
++
+[source,sh,role=execute]
+----
+podman logs -f $CONTAINER_NAME
+----
+* Expect to see output similar to the text below when the container is running, suggesting that our container is listening on port 8321:
++
+[source,textinfo]
+----
+INFO     2025-04-01 22:13:16,340 llama_stack.providers.remote.inference.ollama.ollama:75 inference: checking            
+         connectivity to Ollama at `http://localhost:11434`...                                                          
+INFO     2025-04-01 22:13:20,120 llama_stack.providers.remote.inference.ollama.ollama:294 inference: Pulling embedding  
+         model `all-minilm:latest` if necessary...                                                                      
+INFO     2025-04-01 22:13:26,550 __main__:478 server: Listening on ['::', '0.0.0.0']:8321                               
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO     2025-04-01 22:13:26,567 __main__:148 server: Starting up                                                       
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://['::', '0.0.0.0']:8321 (Press CTRL+C to quit)
+----
+
+[#llamastack_command_line]
+
+== Command line fun with Llama-stack Server (OPTIONAL)
+
+If you want to see some command line example commands you can run, follow along with the instructions, if you want to get straight into the code, *you can skip this part* as it is not required for the rest of the lab.
+
+//TODO: We would probably do this for the user, no need to get into that now.
+
+. Let's start by installing the llama-stack-client 
++
+[source,sh,role=execute]
+----
+python3.12 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install llama-stack-client
+
+----
+
+. Point your `llama-stack-client` at your local llama-stack server:
++
+[source,sh,role=execute]
+----
+llama-stack-client configure --endpoint $LLAMA_STACK_SERVER
+----
+
+. List the models that are currently served by the Llama-stack server 
++
+[source,sh,role=execute]
+----
+llama-stack-client models list
+----
++
+[NOTE]
+====
+With a single command you can also add new ones, like this: 
+
+llama-stack-client models register --provider-id ollama --provider-model-id llama3.2-vision:11b llama3.2-vision:11b
+====
+
+. You can talk directly to the model, to see that things are working
++
+[source,sh,role=execute]
+----
+llama-stack-client \
+  inference chat-completion \
+  --message "Write me a small poem why llamas are better than bees without knees"
+----
+
+. You can also list different services available on the server, such as: `vector_dbs`, `toolgroups`, `shields`, `datasets`, `providers` and many others: 
++
+[source,sh,role=execute]
+----
+llama-stack-client --help
+----
 
 
+. Now that the llama-stack server is running, you can also engage with it through code, API access, simple `curl` commands and more: 
++
+[source,sh,role=execute]
+----
+curl -sS $LLAMA_STACK_SERVER/v1/inference/chat-completion \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $API_KEY" \
+  -d "{
+     \"model_id\": \"$LLAMA_STACK_MODEL\",
+     \"messages\": [{\"role\": \"user\", \"content\": \"Write me a small poem why llamas are better than bees without knees?\"}],
+     \"temperature\": 0.0
+   }" | jq -r '.completion_message | select(.role == "assistant") | .content'
+----
+
+. You can pull out information with structured data request:
++
+[source,sh,role=execute]
+----
+curl -sS $LLAMA_STACK_SERVER/v1/models -H "Content-Type: application/json" | jq -r '.data[].identifier'
+----
+
+//TODO, write a wrap up, and get them onto the next chapter.
