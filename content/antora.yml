@@ -7,7 +7,7 @@ nav:
 asciidoc:
   attributes:
     lab_name: "LB2960 Llamastack"
-    release-version: master
+    # release-version: master
     page-pagination: true
     model_name: granite:8b
     my_var: "foo"
