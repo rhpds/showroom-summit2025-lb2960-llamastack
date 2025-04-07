@@ -1,8 +1,8 @@
-* xref:module-01.adoc[1. Setting up you LlamaStack Servers]
-** xref:module-01.adoc#ollama_setup[Local Ollama Intro]
-** xref:module-01.adoc#llamastack_local_server[Setting up your first LLamaStack Server]
-** xref:module-01.adoc#llamastack_command_line[Having fun with Llamastack command line]
+* xref:00-Overview.adoc[Overview]
 
-* xref:module-02.adoc[2. GitHub Sourced Container]
-** xref:module-02.adoc#prerequisites[Install Prerequisites]
-** xref:module-02.adoc#container[Enable Container]
+* xref:01-Getting-Started.adoc[1. Setting up you LlamaStack Servers]
+// ** xref:01-Getting-Started.adoc#ollama_setup[Local Ollama Intro]
+// ** xref:01-Getting-Started.adoc#llamastack_local_server[Setting up your first LLamaStack Server]
+// ** xref:01-Getting-Started.adoc#llamastack_command_line[Having fun with Llamastack command line]
+
+* xref:02-Inference.adoc[2. Inference]
