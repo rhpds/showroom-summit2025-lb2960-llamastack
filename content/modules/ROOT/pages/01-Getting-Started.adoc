@@ -30,8 +30,10 @@ Let's do a quick walkthrough of our environment to understand what's available:
 ollama list
 ----
 +
+
 * You should see a list of models that are already downloaded and available for use.
 +
+
 [source,textinfo]
 ----
 [dev@dev ~]$ ollama list
@@ -41,13 +43,16 @@ granite3.2:latest    9bcb3335083f    4.9 GB    2 hours ago
 
 . Let's pull down the "ollama pull llama3.2:3b-instruct-fp16" model with the `ollama pull` command:
 +
+
 [source,sh,role=execute]
 ----
 ollama pull llama3.2:3b-instruct-fp16
 ----
 +
+
 * You should see the model being pulled down, that might take a moment:
 +
+
 [source,textinfo]
 ----
 [dev@dev ~]$ ollama pull llama3.2:3b-instruct-fp16
@@ -64,14 +69,16 @@ writing manifest
 success 
 ----
 
-. Running `ollama run {Model_name}` command will let us interact with our LLM on the command line, the `--keepalive 60m` will make sure the model stays loaded, this is important for us as we plan to use this model throughout the lab.
+. Running `ollama run llama3.2:3b-instruct-fp16` command will let us interact with our LLM on the command line, the `--keepalive 90m` will make sure the model stays loaded, this is important for us as we plan to use this model throughout the lab.
 +
+
 [source,sh,role=execute]
 ----
-ollama run llama3.2:3b-instruct-fp16 --keepalive 60m
+ollama run llama3.2:3b-instruct-fp16 --keepalive 90m
 ----
 +
 * Ask the model a question or two, and type `/bye` or CTRL+D to exist the chat 
+
 
 
 [#llamastack_local_server]
@@ -85,13 +92,26 @@ ollama run llama3.2:3b-instruct-fp16 --keepalive 60m
 +
 [source,sh,role=execute]
 ----
-export INFERENCE_MODEL="meta-llama/Llama-3.2-3B-Instruct"
-export LLAMA_STACK_PORT=8321
-export LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT
-export LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.1.9"
-export CONTAINER_NAME="llamastack-ollama-llama3.2-3b-instruct"
-export OLLAMA_PORT=11434
+export INFERENCE_MODEL="meta-llama/Llama-3.2-3B-Instruct"                  <1>
+export LLAMA_STACK_PORT=8321                                               <2>
+export LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT               <3>
+export LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.1.9" <4>
+export CONTAINER_NAME="llamastack-ollama-llama3.2-3b-instruct"             <5> 
+export OLLAMA_PORT=11434                                                   <6>
 ----
++
+<1> Inference Model - the model we will talk to, note Meta's naming is different from `ollama`
+<2> LLAMA_STACK_PORT=8321 - the port the llamastack serve rlistens on, this can be local or remote
+<3> LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT - where you application will connect to
+<4> LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.1.9"
+  * The llamastack version including the type of llm server (`ollama`)
+<5> CONTAINER_NAME="llamastack-ollama-llama3.2-3b-instruct"   
+
+// TODO - is that a silly name for the container? 
+//TODO: Add a schematic code -> llamstack server -> ollama
+
+
+
 //TODO: Create a quick callout note explaining what each of the variables mean
 //TODO: Need to lock this down the the version we want, and have it ready in our registry (also, pre-loaded in the VM maybe)
 

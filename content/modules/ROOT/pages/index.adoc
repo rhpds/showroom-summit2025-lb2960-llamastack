@@ -1,43 +1,37 @@
-= {lab_name}
+= AI applications and LlamaStack: A practical workshop
 
-The `lab_name` var, known as an asciidoc attribute, above was set in `./content/antora.yml` and can be used to set the lab_name or title of your content.
-You are both free to change its value and if you prefer to use a different var name, you can change the value of `lab_name`, for example to `title` in `./content/antora.yml` and then reference it in your content as `\{title}`. +
+Welocme to the **AI applications and LlamaStack** Workshop
 
-image::rhel-logo-black.jpg[rhel-logo-black,55%,55%]
+== Overview
 
-== Variables
+In this workshop we will cover...
 
-Other vars can also be set there, such as `ssh_user` and `ssh_password`, and referenced inline in the lab content by using the `\{foo}` syntax.
+== AI Application Architecture
 
-This is another var, or asciidoc attribute, from `./content/antora.yml` {my_var}
 
-== Writing your lab
 
-Whatever type of content you are writing we'll refer to your *content* as "your lab" in this document.
+[#getting_started]
+== Getting Started with Your Environment
 
-=== Lab structure
+=== Welcome to the Showroom Interface
 
-Wether you are writing a lab
+If you prefer to run each <TAB> as a full browser Tab then the links below enable that.
+ 
+[Attributes]
+|===
+| **Full Browser Tab Options**
+| link:https://{targethost}:9443[Jupyter Lab^]
+| link:https://{targethost}:8443[Studio Code^]
+| link:https://{targethost}/tty-top[Terminal Session (Top)^]
+| link:https://{targethost}/tty-bottom[Terminal Session (Bottom)^]
+| link:https://llama-stack.readthedocs.io/en/latest[Llamastack Docs^]
+|===
 
-* First, we will build a monolithic application already compiled as RPM packages and put it into a container. This will allow us to deploy the application, copy it between machines, and update it separately from the operating system. This process affords us a portable and easily maintained component instead of tightly coupling the application with your operating system maintenance.
 
-* In closing we will build a second container on a different operating system version that makes an application not packaged into RPMs. This will be similar to a web application deployment, positioning the correct files at the right locations. To do this, we will pull a project from GitHub and position the component files within our container image. The purpose of this is to achieve a portable application container that can deploy on several different versions of Red Hat Enterprise Linux. This also provides the benefit of decoupling your application maintenance, which would all happen by building new containers versus operating system maintenance. The container is no longer reliant on the operating system installed on the machine where the application is deployed.
 
-. Now let's examine this cluster a bit more by describing the cluster (the `$GUID` environment variable is already set for you so you can immediately describe your individual cluster):
-+
-[source,sh,role=execute]
-----
-podman ps
-----
-+
-.Sample Output
-[source,texinfo,subs="attributes"]
-----
-CONTAINER ID  IMAGE                        COMMAND           CREATED      STATUS      PORTS                 NAMES
-2dcfee9e50c4  docker.io/library/httpd:2.4  httpd-foreground  3 hours ago  Up 3 hours  0.0.0.0:8080->80/tcp  showroom-httpd
-----
 
-=== Lab Access
 
-The terminal window to your right is *already* logged into the lab environment as the `{ssh_user}` user via `ssh`. 
-All steps of this lab are to be completed as the `{ssh_user}` user.
+|TIP Take a few moments to customize your environment. You'll be in it for the next 60, 7080 minutes and if you don't like the light theme on Jupiter labs or you wanna work with Visual Studio code or you wanna turn on the mode and you know what you're doing take a moment to customize it.
+
+Take a quick tour take your way through the tabs on your right, you can complete the entire lab solely in your primary tab on the Wright i.e. Jupiter labs. Your first Jupiter notebook will give you a few tips to how to use Jupiter notes if you've never used them before and we also have a reference document at the end.
+
