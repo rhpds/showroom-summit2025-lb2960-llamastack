@@ -23,10 +23,10 @@
 |===
 
 | **Full Browser Tab Options**
-| link:https://{targethost}:9443[Jupyter Lab]
-| link:https://{targethost}:8443[Studio Code]
-| link:https://{targethost}/tty-top[Terminal Session (Top)]
-| link:https://{targethost}/tty-bottom[Terminal Session (Bottom)]
-| link:https://llama-stack.readthedocs.io/en/latest[Llamastack Docs]
+| link:https://{targethost}:9443[Jupyter Lab^]
+| link:https://{targethost}:8443[Studio Code^]
+| link:https://{targethost}/tty-top[Terminal Session (Top)^]
+| link:https://{targethost}/tty-bottom[Terminal Session (Bottom)^]
+| link:https://llama-stack.readthedocs.io/en/latest[Llamastack Docs^]
 
 |===
