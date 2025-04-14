@@ -1,9 +1,7 @@
 ---
 site:
   title: Summit 2025 - LB2906 - Getting Started with Llamastack
-#  url: https://redhat-scholars.github.io/course-template
-  start_page: modules::00-Overview.adoc
-  # index.adoc
+  start_page: modules::index.adoc
 
 content:
   sources:
