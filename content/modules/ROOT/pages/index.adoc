@@ -28,6 +28,19 @@ If you prefer to run each <TAB> as a full browser Tab then the links below enabl
 |===
 
 
+== Testing arcade
+++++
+<iframe 
+  src="https://demo.arcade.software/KdRIAFvQcVRiZaEkuQy3?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" 
+  width="100%" 
+  height="600px" 
+  frameborder="0" 
+  allowfullscreen>
+</iframe>
+++++
+
+
+
 
 
 
