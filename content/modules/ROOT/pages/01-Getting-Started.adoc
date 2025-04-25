@@ -95,7 +95,7 @@ ollama run llama3.2:3b-instruct-fp16 --keepalive 90m
 export INFERENCE_MODEL="meta-llama/Llama-3.2-3B-Instruct"                  <1>
 export LLAMA_STACK_PORT=8321                                               <2>
 export LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT               <3>
-export LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.1.9" <4>
+export LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.2.0" <4>
 export CONTAINER_NAME="llamastack-ollama-llama3.2-3b-instruct"             <5> 
 export OLLAMA_PORT=11434                                                   <6>
 ----
@@ -103,7 +103,7 @@ export OLLAMA_PORT=11434                                                   <6>
 <1> Inference Model - the model we will talk to, note Meta's naming is different from `ollama`
 <2> LLAMA_STACK_PORT=8321 - the port the llamastack serve rlistens on, this can be local or remote
 <3> LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT - where you application will connect to
-<4> LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.1.9"
+<4> LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.2.0"
   * The llamastack version including the type of llm server (`ollama`)
 <5> CONTAINER_NAME="llamastack-ollama-llama3.2-3b-instruct"   
 
@@ -165,7 +165,7 @@ If you want to see some command line example commands you can run, follow along 
 python3.12 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
-pip install llama-stack-client
+pip install llama-stack-client==0.2.2
 
 ----
 
