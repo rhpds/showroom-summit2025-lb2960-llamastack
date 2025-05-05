@@ -124,7 +124,7 @@ podman run -d \
     --network=host \
     $LLAMA_SERVER_CONTAINER_IMAGE \
     --port $LLAMA_STACK_PORT \
-    --env LLAMA_STACK_MODEL="$LLAMA_STACK_MODEL" \
+    --env INFERENCE_MODEL="$LLAMA_STACK_MODEL" \
     --env OLLAMA_URL=http://localhost:$OLLAMA_PORT
 ----
     
