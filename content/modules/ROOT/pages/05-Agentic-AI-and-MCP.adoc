@@ -1,1 +1,68 @@
-= Agentic AI and Model Context Protocol (MCP)
+== Llama Stack Agents and Tools
+
+This Module provides an overview of Agents and Tools within the Llama Stack framework.
+
+=== What are Agents?
+
+Agents in Llama Stack are conceived as **instances of AI systems and tools designed to solve problems**. Their primary objective is to **automate routine or complex tasks** ("grunt tasks") to enable users to achieve their desired outcomes more quickly and effectively. Llama Stack aims to make Agents simple and easy to use for building AI applications and experiences. The framework provides a **Unified API layer** for Agents, supported by various Providers and Implementations. Red Hat intends to enhance the reference implementation for Agents provided by Llama Stack.
+
+=== Types of Agents
+
+There are several ways of conceptualizing or implementing agents within or alongside the core Llama Stack framework:
+
+*   **"Regular" Agents:** Refer to agents built using the core Llama Stack Agent APIs. These agents are configured with a model, instructions, and a list of tools they can use. We will provide examples of configuring such `Agent` instances using the Llama Stack Python client.
+*   **RAG Enhanced Agents (Agentic RAG):** These are specifically designed for **more complex queries** that necessitate multi-step reasoning, planning, or interaction with multiple data sources. It is described as an **abstraction of the `rag_tool`** within Llama Stack. This contrasts with "Basic RAG," which is for simpler queries. Building RAG-Enhanced Agents is a covered topic in the Llama Stack demos. In this view, RAG can be seen as a **"Knowledge Agent"** that utilizes retrieval tools.
+*   **ReAct Agents:** There is a specific implementation class called `ReActAgent` available in the Llama Stack Python client library. This pattern intersperses reasoning steps performed by the language model with actions taken using tools [Conversation History]. The `ReActAgent` is instantiated with a client, model, and tools, and is used to create sessions and process turns.
+
+=== Agent Code Components and Steps
+
+Interacting with agents in Llama Stack involves several core concepts and code components:
+
+*   **Agent Configuration:** Setting up the agent instance, specifying parameters like the model, instructions, and the list of tools it can access.
+*   **Sessions:** Representing a continuous conversation or sequence of interactions with the agent. Agents have a method to create sessions, like `agent.create_session()`.
+*   **Turns:** An individual exchange within a session, typically consisting of a user message and the agent's response. Agents process turns using methods like `agent.create_turn()`.
+*   **Steps:** These are the individual actions or reasoning stages an agent undertakes during a turn as part of its **Agent Execution Loop**. The execution loop is the process where the agent receives input, reasons, decides on and potentially uses tools, and generates a response [29, Conversation History].
+
+We wi;; review examples to demonstrate instantiating `Agent` or `ReActAgent` objects, creating sessions, and processing messages within turns.
+
+=== How Agents Use Tools and Built-in Tools
+
+Agents leverage **Tools** to expand their capabilities beyond the language model's inherent knowledge or function. Tools allow agents to perform specific actions, interact with external systems, or access specialized information.
+
+Llama Stack provides a **Unified API layer** for Tools, ensuring a consistent way to interact with diverse tool implementations. Tools are accessed via different **Tool Group providers**:
+
+*   **Built-in providers:** These tools are included directly within the Llama Stack framework.
+    *   **`builtin::websearch`**: Allows agents to perform internet searches.
+    *   **`builtin::rag`**: Encapsulates the Retrieval Augmented Generation (RAG) functionality, enabling agents (including Agentic RAG) to retrieve information from configured vector databases. Agentic RAG is implemented as an abstraction of this tool.
+    *   Other documented built-in tools include the `Code-Interpreter Tool` and the `WolframAlpha Tool`.
+*   **Model Context Protocol (MCP) Tools:** Agents can also utilize tools exposed by **remote MCP servers**. MCP provides a mechanism to easily connect to and use tools running elsewhere.
+
+Agents are explicitly **configured with the specific tools** they are allowed to use. During execution, the agent's reasoning process determines which, if any, of its configured tools are needed to fulfill the user's request, and it then invokes the appropriate tool(s).
+
+
+== Guardrails in Llama Stack
+
+This section introduces the concept of guardrails in AI applications and explains how the Llama Stack framework helps implement them.
+
+=== What are Guardrails and Why Are They Important?
+
+In AI and Large Language Models (LLMs), **guardrails** are essentially safety checks. They are mechanisms designed to ensure that AI applications behave safely, reliably, and ethically. Guardrails are crucial for preventing the generation of harmful, biased, or unwanted content. They also help ensure that AI systems follow specific rules or policies.
+
+Implementing guardrails is **crucial for using AI responsibly**. Without them, AI applications could produce wrong information, engage in harmful interactions, or be used for bad purposes. Guardrails add a necessary layer of control and safety.
+
+=== Implementing Guardrails with Llama Stack
+
+Llama Stack makes it easier to build safety and control into your AI applications. It offers a **Unified API layer specifically for Safety**. This means you can use different safety tools through one consistent set of APIs provided by Llama Stack, no matter which tool or provider you choose.
+
+This consistent approach works with Llama Stack's **plugin architecture**. Different safety solutions, called providers, can be "plugged in" to perform safety checks.
+
+Here are some examples of Safety API providers mentioned in the sources that can be integrated:
+
+*   **Llama Guard**: A provider for the Safety API. Its environment depends on the inference provider being used.
+*   **Prompt Guard**: Another Safety API provider. This one runs in a single-node environment.
+*   **Code Scanner**: Also listed as a Safety API provider, operating in a single-node environment.
+*   **Integration with services like AWS Bedrock**: The Safety API can connect with hosted services like AWS Bedrock, allowing you to use their safety features through Llama Stack. AWS Bedrock is a hosted environment provider for the Safety API.
+
+By providing a standard API and supporting various safety providers, Llama Stack simplifies setting up **strong guardrails**. This makes it easier to build safer AI applications. Red Hat intends to provide support for these Llama Stack APIs, including the Safety API.
+
+
