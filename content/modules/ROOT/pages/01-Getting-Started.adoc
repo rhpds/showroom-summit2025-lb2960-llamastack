@@ -1,5 +1,5 @@
 = Exploring your local environment
-
+//TODO: Made changes, need to test.
 
 In this Module, we will deploy a Llama-Stack Server, a powerful platform designed to simplify and streamline your development workflow. 
 
@@ -92,7 +92,7 @@ ollama run llama3.2:3b-instruct-fp16 --keepalive 90m
 +
 [source,sh,role=execute]
 ----
-export INFERENCE_MODEL="meta-llama/Llama-3.2-3B-Instruct"                  <1>
+export LLAMA_STACK_MODEL="meta-llama/Llama-3.2-3B-Instruct"                  <1>
 export LLAMA_STACK_PORT=8321                                               <2>
 export LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT               <3>
 export LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.2.5" <4>
@@ -124,7 +124,7 @@ podman run -d \
     --network=host \
     $LLAMA_SERVER_CONTAINER_IMAGE \
     --port $LLAMA_STACK_PORT \
-    --env INFERENCE_MODEL="$INFERENCE_MODEL" \
+    --env LLAMA_STACK_MODEL="$LLAMA_STACK_MODEL" \
     --env OLLAMA_URL=http://localhost:$OLLAMA_PORT
 ----
     
@@ -211,14 +211,7 @@ llama-stack-client --help
 +
 [source,sh,role=execute]
 ----
-curl -sS $LLAMA_STACK_SERVER/v1/inference/chat-completion \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer $API_KEY" \
-  -d "{
-     \"model_id\": \"$INFERENCE_MODEL\",
-     \"messages\": [{\"role\": \"user\", \"content\": \"Write me a small poem why llamas are better than bees without knees?\"}],
-     \"temperature\": 0.0
-   }" | jq -r '.completion_message | select(.role == "assistant") | .content'
+gi
 ----
 
 . You can pull out information with structured data request:
