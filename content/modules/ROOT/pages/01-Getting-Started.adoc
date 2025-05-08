@@ -211,7 +211,14 @@ llama-stack-client --help
 +
 [source,sh,role=execute]
 ----
-gi
+curl -sS $LLAMA_STACK_SERVER/v1/inference/chat-completion \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $API_KEY" \
+  -d "{
+     \"model_id\": \"$LLAMA_STACK_MODEL\",
+     \"messages\": [{\"role\": \"user\", \"content\": \"Write me a small poem why llamas are better than bees without knees?\"}],
+     \"temperature\": 0.0
+   }" | jq -r '.completion_message | select(.role == "assistant") | .content'
 ----
 
 . You can pull out information with structured data request:
