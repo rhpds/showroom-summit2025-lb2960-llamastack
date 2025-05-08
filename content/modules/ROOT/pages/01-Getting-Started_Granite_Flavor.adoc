@@ -1,0 +1,243 @@
+= Exploring your local environment
+//TODO: Made changes, need to test.
+
+In this Module, we will deploy a Llama-Stack Server, a powerful platform designed to simplify and streamline your development workflow. 
+
+We will take you through the process of setting up our first Llama-Stack Server instance, leveraging the Ollama Local LLM server for seamless local development. By the end of this segment, you will gain hands-on experience with the basics of Llama-Stack Server and be equipped to tackle more complex tasks in subsequent lab segments.
+
+Throughout this Module, we will cover essential topics such as:
+
+* Setting up the Ollama Local LLM server
+* Configuring the Llama-Stack Server instance
+* Exploring core features and functionality
+
+Let's dive into the world of Llama-Stack Server and get started with our first instance!
+
+
+[#ollama_setup]
+== Local LLM Development with Ollama
+
+In this lab, you will be setting up your own local Large Language Model (LLM) server using Ollama. This approach allows you to experiment with AI coding assistance without relying on external cloud services, giving you full control over your AI environment.
+
+Ollama provides a simple way to run various open-source large language models on your local machine. We have taken the libery to install ollama server for you and download a few models to save you time. 
+
+Let's do a quick walkthrough of our environment to understand what's available:
+
+. Run the `ollama list` command to display the models available locally:
++
+[source,sh,role=execute]
+----
+ollama list
+----
++
+
+* You should see a list of models that are already downloaded and available for use.
++
+
+[source,textinfo]
+----
+[dev@dev ~]$ ollama list
+NAME                 ID              SIZE      MODIFIED    
+granite3.2:latest    9bcb3335083f    4.9 GB    2 hours ago  
+----
+
+. Let's pull down the "ollama pull llama3.2:3b-instruct-fp16" model with the `ollama pull` command:
++
+
+[source,sh,role=execute]
+----
+ollama pull rjmalagon/granite3.2:8b-instruct-bf16
+----
++
+
+* You should see the model being pulled down, that might take a moment:
++
+
+[source,textinfo]
+----
+[dev@dev ~]$ ollama pull rjmalagon/granite3.2:8b-instruct-bf16
+> 
+pulling manifest 
+pulling e2f46f5b501c... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏ 6.4 GB                         
+pulling 966de95ca8a6... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏ 1.4 KB                         
+pulling fcc5a6bec9da... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏ 7.7 KB                         
+pulling a70ff7e570d9... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏ 6.0 KB                         
+pulling 56bb8bd477a5... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏   96 B                         
+pulling 1bc315994ceb... 100% ▕██████████████████████████████████████████████████████████████████████████████████████████████████▏  558 B                         
+verifying sha256 digest 
+writing manifest 
+success 
+----
+
+. Running `ollama run rjmalagon/granite3.2:8b-instruct-bf16` command will let us interact with our LLM on the command line, the `--keepalive 90m` will make sure the model stays loaded, this is important for us as we plan to use this model throughout the lab.
++
+
+[source,sh,role=execute]
+----
+ollama run granite3.2:8b-instruct-bf16 --keepalive 90m
+----
++
+* Ask the model a question or two, and type `/bye` or CTRL+D to exist the chat 
+
+
+
+[#llamastack_local_server]
+== Setting up your first LLamaStack Server
+
+//TODO: Write pretty words about llamastacks server
+
+//TODO: Note to Tony, It's slick to have variables, but for the student, is it better to just have a single command?
+
+. Let's create some variables that will make the install easier, you can hard code your commands, but this makes them easy to remember and change when you create lots of these in the future:
++
+[source,sh,role=execute]
+----
+export LLAMA_STACK_MODEL="granite3.2:8b-instruct-bf16"                  <1>
+export LLAMA_STACK_PORT=8322                                               <2>
+export LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT               <3>
+export LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.2.5" <4>
+export CONTAINER_NAME="llamastack-ollama-granit3b-8b-instruct"             <5> 
+export OLLAMA_PORT=11434                                                   <6>
+----
++
+<1> Inference Model - the model we will talk to, note Meta's naming is different from `ollama`
+<2> LLAMA_STACK_PORT=8321 - the port the llamastack serve rlistens on, this can be local or remote
+<3> LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT - where you application will connect to
+<4> LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.2.0"
+  * The llamastack version including the type of llm server (`ollama`)
+<5> CONTAINER_NAME="llamastack-ollama-llama3.2-3b-instruct"   
+
+// TODO - is that a silly name for the container? 
+//TODO: Add a schematic code -> llamstack server -> ollama
+export LLAMA_STACK_MODEL="granite3-dense:8b"               
+export LLAMA_STACK_PORT=8323                                               
+export LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT            
+export LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.2.5" 
+export CONTAINER_NAME="llamastack-ollama-granit3b-8b-dense"            
+export OLLAMA_PORT=11434    
+
+### with VLLM
+export LLAMA_STACK_MODEL="ibm-granite/granite-3.2-8b-instruct"               
+export LLAMA_STACK_PORT=8324                                               
+export LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT            
+export LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-remote-vllm" 
+export CONTAINER_NAME="llamastack-ollama-granit3b-8b-dense"            
+export OLLAMA_PORT=11434 
+
+//TODO: Create a quick callout note explaining what each of the variables mean
+//TODO: Need to lock this down the the version we want, and have it ready in our registry (also, pre-loaded in the VM maybe)
+
+. Run the container using the `podman run` command:
++
+[source,sh,role=execute]
+----
+podman run -d \
+    --name $CONTAINER_NAME \
+    --network=host \
+    $LLAMA_SERVER_CONTAINER_IMAGE \
+    --port $LLAMA_STACK_PORT \
+    --env INFERENCE_MODEL="$LLAMA_STACK_MODEL" \
+    --env OLLAMA_URL=http://localhost:$OLLAMA_PORT
+----
+    
+. Let's watch the container load and see that it is running succesfully 
++
+[source,sh,role=execute]
+----
+podman logs -f $CONTAINER_NAME
+----
+* Expect to see output similar to the text below when the container is running, suggesting that our container is listening on port 8321:
++
+[source,textinfo]
+----
+INFO     2025-04-01 22:13:16,340 llama_stack.providers.remote.inference.ollama.ollama:75 inference: checking            
+         connectivity to Ollama at `http://localhost:11434`...                                                          
+INFO     2025-04-01 22:13:20,120 llama_stack.providers.remote.inference.ollama.ollama:294 inference: Pulling embedding  
+         model `all-minilm:latest` if necessary...                                                                      
+INFO     2025-04-01 22:13:26,550 __main__:478 server: Listening on ['::', '0.0.0.0']:8321                               
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO     2025-04-01 22:13:26,567 __main__:148 server: Starting up                                                       
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://['::', '0.0.0.0']:8321 (Press CTRL+C to quit)
+----
+
+[#llamastack_command_line]
+
+== Command line fun with Llama-stack Server (OPTIONAL)
+
+If you want to see some command line example commands you can run, follow along with the instructions, if you want to get straight into the code, *you can skip this part* as it is not required for the rest of the lab.
+
+//TODO: We would probably do this for the user, no need to get into that now.
+
+. Let's start by installing the llama-stack-client 
++
+[source,sh,role=execute]
+----
+python3.12 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install llama-stack-client==0.2.5
+
+----
+
+. Point your `llama-stack-client` at your local llama-stack server:
++
+[source,sh,role=execute]
+----
+llama-stack-client configure --endpoint $LLAMA_STACK_SERVER
+----
+
+. List the models that are currently served by the Llama-stack server 
++
+[source,sh,role=execute]
+----
+llama-stack-client models list
+----
++
+[NOTE]
+====
+With a single command you can also add new ones, like this: 
+
+llama-stack-client models register --provider-id ollama --provider-model-id llama3.2-vision:11b llama3.2-vision:11b
+====
+
+. You can talk directly to the model, to see that things are working
++
+[source,sh,role=execute]
+----
+llama-stack-client \
+  inference chat-completion \
+  --message "Write me a small poem why llamas are better than bees without knees"
+----
+
+. You can also list different services available on the server, such as: `vector_dbs`, `toolgroups`, `shields`, `datasets`, `providers` and many others: 
++
+[source,sh,role=execute]
+----
+llama-stack-client --help
+----
+
+
+. Now that the llama-stack server is running, you can also engage with it through code, API access, simple `curl` commands and more: 
++
+[source,sh,role=execute]
+----
+curl -sS $LLAMA_STACK_SERVER/v1/inference/chat-completion \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $API_KEY" \
+  -d "{
+     \"model_id\": \"$LLAMA_STACK_MODEL\",
+     \"messages\": [{\"role\": \"user\", \"content\": \"Write me a small poem why llamas are better than bees without knees?\"}],
+     \"temperature\": 0.0
+   }" | jq -r '.completion_message | select(.role == "assistant") | .content'
+----
+
+. You can pull out information with structured data request:
++
+[source,sh,role=execute]
+----
+curl -sS $LLAMA_STACK_SERVER/v1/models -H "Content-Type: application/json" | jq -r '.data[].identifier'
+----
+
+//TODO, write a wrap up, and get them onto the next chapter.
