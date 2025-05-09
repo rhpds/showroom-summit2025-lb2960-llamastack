@@ -13,3 +13,12 @@ By the end of this module, you will be able to:
 Ready to give your LLM new abilities by adding tools?
 
 Proceed to the `04_Agents_and_Tools.ipynb` notebook and follow the instructions to work with Llama Stack Agents and discover the power of integrated tools!
+
+
+=== Reference Material
+
+In the world of AI agents, the ability to use external tools is a key feature. This diagram illustrates the typical flow of how an agent interacts with a tool to fulfill a user's request, covering the concepts of Tool Calling, Execution, and Observation that you saw in the notebook.
+
+image::assets/agent_tool_flow.png[Agent-Tool Interaction Flow]
+
+Understanding this cycle helps explain the "Steps" you observed an agent taking. The agent reasons about the request, decides which tool is needed, calls the tool, processes the tool's output (Observation), and then uses that information to provide a helpful response.

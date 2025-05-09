@@ -13,7 +13,7 @@ Ready to see how easy it is to start building with Llama Stack?
 Navigate to the `02_Lllamastack_Inference_Basics.ipynb` notebook in your lab environment. Follow the steps within the notebook to explore these basic inference capabilities hands-on!
 
 
-== Reference materials: 
+== Reference material:
 To help visualize the flow of information when interacting with Llama Stack, let's look at a couple of simple diagrams. These illustrate how your code, the Llama Stack client, the server, and the LLM model work together.
 
 First, here is the basic flow for a standard chat completion request:
@@ -29,3 +29,12 @@ image::./assets/structured_data_flow.png[Llama Stack Structured Data Flow]
 As you can see, the core flow is similar, but we've added the concept of the `response_format` guiding the LLM's output. The diagram also emphasizes that the response returning contains structured data (like JSON), which your code (potentially using tools like Pydantic) can easily work with programmatically.
 
 These visuals should help reinforce the concepts as you work through the code examples in the notebook.
+
+
+=== Reference Material
+
+ReAct agents employ a powerful iterative process to solve problems. This diagram visualizes the core Reason-Act-Observe loop that defines their behavior, allowing them to perform complex, multi-step tasks by dynamically planning and using tools based on prior observations.
+
+image::assets/react_agent_loop.png[ReAct Agent Loop]
+
+The diagram illustrates how the agent cycles through thinking (Thought), performing an action (Action/Tool Call), and processing the result of that action (Observation). This loop repeats until the agent determines it has enough information to provide a final answer, showcasing a more dynamic and capable approach compared to simpler agent types.

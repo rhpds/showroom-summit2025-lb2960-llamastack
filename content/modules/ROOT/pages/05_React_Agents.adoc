@@ -17,6 +17,14 @@ Ready to experience the power of agents that can reason and act?
 Open the `05_React_Agents.ipynb` notebook and follow along to build and observe a ReAct agent in action!
 This Module provides an overview of Agents and Tools within the Llama Stack framework.
 
+=== Reference Material
+
+ReAct agents employ a powerful iterative process to solve problems. This diagram visualizes the core Reason-Act-Observe loop that defines their behavior, allowing them to perform complex, multi-step tasks by dynamically planning and using tools based on prior observations.
+
+image::assets/react_agent_loop.png[ReAct Agent Loop]
+
+The diagram illustrates how the agent cycles through thinking (Thought), performing an action (Action/Tool Call), and processing the result of that action (Observation). This loop repeats until the agent determines it has enough information to provide a final answer, showcasing a more dynamic and capable approach compared to simpler agent types.
+
 // === What are Agents?
 
 // Agents in Llama Stack are conceived as **instances of AI systems and tools designed to solve problems**. Their primary objective is to **automate routine or complex tasks** ("grunt tasks") to enable users to achieve their desired outcomes more quickly and effectively. Llama Stack aims to make Agents simple and easy to use for building AI applications and experiences. The framework provides a **Unified API layer** for Agents, supported by various Providers and Implementations. Red Hat intends to enhance the reference implementation for Agents provided by Llama Stack.
