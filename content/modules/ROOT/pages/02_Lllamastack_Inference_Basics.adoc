@@ -11,3 +11,21 @@ By the end of this module, you will be able to:
 Ready to see how easy it is to start building with Llama Stack?
 
 Navigate to the `02_Lllamastack_Inference_Basics.ipynb` notebook in your lab environment. Follow the steps within the notebook to explore these basic inference capabilities hands-on!
+
+
+== Reference materials: 
+To help visualize the flow of information when interacting with Llama Stack, let's look at a couple of simple diagrams. These illustrate how your code, the Llama Stack client, the server, and the LLM model work together.
+
+First, here is the basic flow for a standard chat completion request:
+
+image::./assets/basic_inference_flow.png[Basic Llama Stack Inference Flow]
+
+This diagram shows the request originating from your Python code, traveling through the Llama Stack client and server to the LLM, and the response following the path back. This highlights the role of the Llama Stack components in mediating the interaction with the AI model.
+
+Now, let's consider the flow when you request structured data using the `response_format` parameter:
+
+image::./assets/structured_data_flow.png[Llama Stack Structured Data Flow]
+
+As you can see, the core flow is similar, but we've added the concept of the `response_format` guiding the LLM's output. The diagram also emphasizes that the response returning contains structured data (like JSON), which your code (potentially using tools like Pydantic) can easily work with programmatically.
+
+These visuals should help reinforce the concepts as you work through the code examples in the notebook.
