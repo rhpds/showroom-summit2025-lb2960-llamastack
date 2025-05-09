@@ -6,10 +6,10 @@
 // ** xref:01-Getting-Started.adoc#llamastack_local_server[Setting up your first LLamaStack Server]
 // ** xref:01-Getting-Started.adoc#llamastack_command_line[Having fun with Llamastack command line]
 
-* xref:02-Inference.adoc[2. Inference]
+* xref:02_Lllamastack_Inference_Basics.adoc[2. Llama Stack Inference Basics]
 
-* xref:03-Guardrails.adoc[3. Guardrails]
-* xref:04-RAG.adoc[4. Retrevial-Augmented Generation (RAG)]
-* xref:05-Agentic-AI-and-MCP.adoc[5. Agentic AI and MCP]
+* xref:03_RAG_Agent_Basic_Example.adoc[3. RAG Agent Basic Example]
+* xref:04_Agents_and_Tools.adoc[4. Agents and Tools]
+* xref:05_React_Agents[5. ReAct Agents]
 * xref:06-Llamastack-in-Production.adoc[6. Llamastack in Production]
 * xref:Creds-URLs-Resources.adoc[Creds, URLS, and Resources]
