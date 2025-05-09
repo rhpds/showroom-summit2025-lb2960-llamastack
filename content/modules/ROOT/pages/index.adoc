@@ -20,6 +20,7 @@ If you prefer to run each <TAB> as a full browser Tab then the links below enabl
 [Attributes]
 |===
 | **Full Browser Tab Options**
+| link:https://{targethost}/showroom/modules/index.html[Lab Content^]
 | link:https://{targethost}:9443[Jupyter Lab^]
 | link:https://{targethost}:8443[Studio Code^]
 | link:https://{targethost}/tty-top[Terminal Session (Top)^]
@@ -35,7 +36,8 @@ If you prefer to run each <TAB> as a full browser Tab then the links below enabl
   width="100%" 
   height="600px" 
   frameborder="0" 
-  allowfullscreen>
+  allowfullscreen
+  muted>
 </iframe>
 ++++
 
