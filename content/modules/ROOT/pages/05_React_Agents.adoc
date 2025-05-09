@@ -21,7 +21,7 @@ This Module provides an overview of Agents and Tools within the Llama Stack fram
 
 ReAct agents employ a powerful iterative process to solve problems. This diagram visualizes the core Reason-Act-Observe loop that defines their behavior, allowing them to perform complex, multi-step tasks by dynamically planning and using tools based on prior observations.
 
-image::assets/react_agent_loop.png[ReAct Agent Loop]
+image::react_agent_loop.png[ReAct Agent Loop]
 
 The diagram illustrates how the agent cycles through thinking (Thought), performing an action (Action/Tool Call), and processing the result of that action (Observation). This loop repeats until the agent determines it has enough information to provide a final answer, showcasing a more dynamic and capable approach compared to simpler agent types.
 

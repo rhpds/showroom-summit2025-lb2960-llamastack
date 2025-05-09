@@ -18,23 +18,16 @@ To help visualize the flow of information when interacting with Llama Stack, let
 
 First, here is the basic flow for a standard chat completion request:
 
-image::./assets/basic_inference_flow.png[Basic Llama Stack Inference Flow]
+image::basic_inference_flow.png[Basic Llama Stack Inference Flow]
 
 This diagram shows the request originating from your Python code, traveling through the Llama Stack client and server to the LLM, and the response following the path back. This highlights the role of the Llama Stack components in mediating the interaction with the AI model.
 
 Now, let's consider the flow when you request structured data using the `response_format` parameter:
 
-image::./assets/structured_data_flow.png[Llama Stack Structured Data Flow]
+image::structured_data_flow.png[Llama Stack Structured Data Flow]
 
 As you can see, the core flow is similar, but we've added the concept of the `response_format` guiding the LLM's output. The diagram also emphasizes that the response returning contains structured data (like JSON), which your code (potentially using tools like Pydantic) can easily work with programmatically.
 
 These visuals should help reinforce the concepts as you work through the code examples in the notebook.
 
 
-=== Reference Material
-
-ReAct agents employ a powerful iterative process to solve problems. This diagram visualizes the core Reason-Act-Observe loop that defines their behavior, allowing them to perform complex, multi-step tasks by dynamically planning and using tools based on prior observations.
-
-image::assets/react_agent_loop.png[ReAct Agent Loop]
-
-The diagram illustrates how the agent cycles through thinking (Thought), performing an action (Action/Tool Call), and processing the result of that action (Observation). This loop repeats until the agent determines it has enough information to provide a final answer, showcasing a more dynamic and capable approach compared to simpler agent types.

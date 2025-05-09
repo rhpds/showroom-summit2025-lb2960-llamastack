@@ -20,6 +20,6 @@ Open the `03_RAG_Agent_Basic_Example.ipynb` notebook and follow the guided steps
 
 To complement your understanding of Retrieval-Augmented Generation (RAG) in Llama Stack, the following diagram visualizes the end-to-end RAG pipeline. This process is key to enabling LLMs to provide answers based on your specific documentation or data.
 
-image::assets/rag_pipeline_flow_tb.png[RAG Pipeline Flow]
+image::rag_pipeline_flow_tb.png[RAG Pipeline Flow]
 
 This diagram illustrates how source documents are processed and indexed into a vector database (the 'Indexing' phase) and then how a user query utilizes that indexed data to help the LLM generate a relevant and informed answer (the 'Querying' phase). Understanding this flow is crucial for debugging and optimizing your RAG applications.
