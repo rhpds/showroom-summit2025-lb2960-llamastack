@@ -1,1 +1,15 @@
-= Retrevial-Augmented Generation (RAG)
+== Module 4: Agents and Tools
+
+Now that you're comfortable with basic inference and RAG, let's explore the concept of AI Agents and how they can leverage tools to perform more dynamic tasks. Agents in Llama Stack are designed to reason about a user's request and decide which actions (like using a tool) are needed to fulfill it. This module will introduce you to defining agents and equipping them with capabilities beyond just generating text.
+
+By the end of this module, you will be able to:
+
+* Define a basic agent using the Llama Stack client.
+* Equip an agent with tools, including built-in capabilities like web searching.
+* Understand the fundamental concepts of an agent's execution, such as "Turns," "Steps," and the "Tool Calling" process.
+* Run an agent to observe how it utilizes tools to respond to queries.
+* (Optional) Explore prompt chaining to enable conversational memory and context across multiple interactions.
+
+Ready to give your LLM new abilities by adding tools?
+
+Proceed to the `04_Agents_and_Tools.ipynb` notebook and follow the instructions to work with Llama Stack Agents and discover the power of integrated tools!

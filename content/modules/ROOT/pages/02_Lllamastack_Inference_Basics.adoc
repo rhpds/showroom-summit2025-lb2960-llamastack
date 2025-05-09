@@ -1,1 +1,13 @@
-= Inference
+== Module 2: Llama Stack Inference Basics
+
+Welcome to the second module of our Llama Stack hands-on lab! Having set up your Llama Stack server, you're now ready to dive into the core capabilities of interacting with Large Language Models (LLMs) using the Llama Stack client. This module introduces the fundamental concepts of making chat completion requests and working with structured data responses.
+
+By the end of this module, you will be able to:
+
+* Initialize the Llama Stack client to connect to your running server.
+* Send simple chat prompts to an LLM and receive text responses.
+* Utilize structured response formats to extract specific information from LLM outputs programmatically.
+
+Ready to see how easy it is to start building with Llama Stack?
+
+Navigate to the `02_Lllamastack_Inference_Basics.ipynb` notebook in your lab environment. Follow the steps within the notebook to explore these basic inference capabilities hands-on!

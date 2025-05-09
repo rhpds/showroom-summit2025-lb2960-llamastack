@@ -1,4 +1,4 @@
-= Exploring your local environment
+== Module 1: Getting Started
 
 In this Module, we will deploy a Llama-Stack Server, a powerful platform designed to simplify and streamline your development workflow. 
 
