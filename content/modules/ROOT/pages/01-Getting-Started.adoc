@@ -108,7 +108,7 @@ export OLLAMA_PORT=11434                                                   <6>
   * The llamastack version including the type of llm server (`ollama`)
 <5> CONTAINER_NAME="llamastack-ollama"   
 
-. Run the container using the `podman run` command:
+. Run the container using the `podman run` command: (If you are a docker user, just use `docker run`)
 +
 [source,sh,role=execute]
 ----
@@ -120,7 +120,7 @@ podman run -d \
     --env INFERENCE_MODEL="$LLAMA_STACK_MODEL" \
     --env OLLAMA_URL=http://localhost:$OLLAMA_PORT
 ----
-    
+  
 . Let's watch the container load and see that it is running succesfully 
 +
 [source,sh,role=execute]
@@ -148,8 +148,6 @@ INFO:     Uvicorn running on http://['::', '0.0.0.0']:8321 (Press CTRL+C to quit
 == Command line fun with Llama-stack Server (OPTIONAL)
 
 If you want to see some command line example commands you can run, follow along with the instructions, if you want to get straight into the code, *you can skip this part* as it is not required for the rest of the lab.
-
-//TODO: We would probably do this for the user, no need to get into that now.
 
 [IMPORTANT]
 ====
@@ -224,4 +222,14 @@ curl -sS $LLAMA_STACK_SERVER/v1/inference/chat-completion \
 curl -sS $LLAMA_STACK_SERVER/v1/models -H "Content-Type: application/json" | jq -r '.data[].identifier'
 ----
 
-//TODO, write a wrap up, and get them onto the next chapter.
+== Lab Summary: Getting Familiar with Llama Stack Basics
+
+In this initial lab module, you took your first steps with the Llama Stack framework, exploring fundamental concepts for interacting with Large Language Models (LLMs). You learned how Llama Stack simplifies connecting to and utilizing different models.
+
+Through practical exercises, you gained experience in:
+
+* **Initializing the Llama Stack client:** Connecting your Python code to the Llama Stack server environment.
+* **Performing basic chat completion:** Sending prompts to an LLM and receiving responses.
+* **Extracting structured data:** Using `response_format` and Pydantic models to get specific, structured information from the LLM's output, moving beyond simple text responses.
+
+This module provided a foundational understanding of interacting with LLMs via Llama Stack, demonstrating how straightforward it is to begin building Gen AI applications and prepare for more advanced concepts like RAG and Agents in subsequent sections.
