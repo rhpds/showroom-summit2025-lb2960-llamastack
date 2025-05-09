@@ -11,5 +11,5 @@
 * xref:03_RAG_Agent_Basic_Example.adoc[3. RAG Agent Basic Example]
 * xref:04_Agents_and_Tools.adoc[4. Agents and Tools]
 * xref:05_React_Agents.adoc[5. ReAct Agents]
-* xref:06-Llamastack-in-Production.adoc[6. Llamastack in Production]
+//* xref:06-Llamastack-in-Production.adoc[6. Llamastack in Production]
 * xref:Creds-URLs-Resources.adoc[Creds, URLS, and Resources]
