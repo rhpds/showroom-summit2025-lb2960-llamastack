@@ -161,7 +161,7 @@ If you want to see some command line example commands you can run, follow along 
 
 [IMPORTANT]
 ====
-Switch to the Terminal window for this section, as any long running commands will perisit via its `tmux` session, in case you get temproraily disconnected.
+Switch to the Terminal window for this section, as any long running commands will perisit via its `tmux` session, in case you get temporarily disconnected.
 ====
 . Let's start by installing the llama-stack-client
 +
