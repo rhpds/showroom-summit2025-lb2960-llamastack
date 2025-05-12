@@ -74,7 +74,7 @@ success
 
 [source,sh,role=execute]
 ----
-ollama run llama3.2:3b-instruct-fp16 --keepalive --keepalive -1m
+ollama run llama3.2:3b-instruct-fp16 --keepalive 60m
 ----
 +
 
