@@ -12,7 +12,7 @@
 * xref:04_Agents_and_Tools.adoc[4. Agents and Tools]
 * xref:05_React_Agents.adoc[5. ReAct Agents]
 * xref:06_MCP_Servers_Intro.adoc[6. MCP Server Intro]
-* xref:7_Putting_It_All_Together.adoc[7. Putting it all together]
+* xref:07_Putting_It_All_Together.adoc[7. Putting it all together]
 
 
 * xref:Creds-URLs-Resources.adoc[Creds, URLS, and Resources]

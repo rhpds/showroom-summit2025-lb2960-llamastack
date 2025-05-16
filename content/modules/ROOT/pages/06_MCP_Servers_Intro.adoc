@@ -19,6 +19,6 @@ Open the `06_MCP_Servers.ipynb` notebook and follow along to empower your agents
 
 The **Model Context Protocol (MCP)** is a powerful concept that allows Llama Stack agents to interact with external, specialized services. This diagram illustrates the typical flow of how an MCP server integrates with Llama Stack, exposing its capabilities as tools that your agents can dynamically discover and utilize.
 
-image::assets/mcp_integration_flow_tb.png[MCP Integration Flow (Top-to-Bottom)]
+image::mcp_integration_flow_tb.png[MCP Integration Flow (Top-to-Bottom)]
 
 This visual shows the end-to-end process: from the external MCP Server providing its tool definitions, through Llama Stack's registration of these tools, to an agent making a dynamic tool call to that external service to retrieve data and then formulating a response for the user. The top-to-bottom layout is used here to ensure it fits better on the page. This seamless integration dramatically extends the real-world utility of your AI agents.
