@@ -28,8 +28,21 @@ If you prefer to run each <TAB> as a full browser Tab then the links below enabl
 | link:https://llama-stack.readthedocs.io/en/latest[Llamastack Docs^]
 |===
 
+== Ricardo's Guide to Jupyter!
+++++
+<iframe 
+  src="https://demo.arcade.software/eF1CtDuuD4hKWspBmiYR?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+  width="100%" 
+  height="600px" 
+  frameborder="0" 
+  allowfullscreen
+  muted>
+</iframe>
+++++
 
-== Testing arcade
+// <!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(56.67989417989418% + 41px); height: 0; width: 100%;"><iframe src="https://demo.arcade.software/eF1CtDuuD4hKWspBmiYR?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="AI Workshop Setup with JupyterLab" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->
+
+== Testing old arcade on https://demo.arcade.softwar
 ++++
 <iframe 
   src="https://demo.arcade.software/KdRIAFvQcVRiZaEkuQy3?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" 
@@ -40,9 +53,6 @@ If you prefer to run each <TAB> as a full browser Tab then the links below enabl
   muted>
 </iframe>
 ++++
-
-
-
 
 
 
