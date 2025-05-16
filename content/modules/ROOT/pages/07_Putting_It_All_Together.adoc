@@ -11,7 +11,7 @@ By the end of this module, you will be able to:
     * Set up the components required for a multi-tool, RAG-enabled agent, including preparing a Vector Database.
 * **Part B: Agent Execution**
     * Understand how to combine Llama Stack components (Agents, MCP, RAG) to build complex, multi-functional agents.
-    * Configure a Llama Stack agent to effectively utilize multiple toolgroups and a RAG knowledge base.
+    * Configure a Llama Stack agent to effectively utilize multiple `toolgroups` and a RAG knowledge base.
     * Execute the agent and observe its decision-making process when handling complex queries that require coordinating multiple tools and knowledge sources.
     * Appreciate the flexibility and power gained by integrating various Llama Stack features.
 

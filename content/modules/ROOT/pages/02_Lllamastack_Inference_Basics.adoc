@@ -10,10 +10,32 @@ By the end of this module, you will be able to:
 
 Ready to see how easy it is to start building with Llama Stack?
 
-Navigate to the `02_Lllamastack_Inference_Basics.ipynb` notebook in your lab environment. Follow the steps within the notebook to explore these basic inference capabilities hands-on!
+=== Using Jupyter Lab
 
+This module also marks a transition: from this point forward, all technical instructions, code examples, and detailed explanations for the lab exercises will be presented within Jupyter Notebooks.
+
+Take a few moments to familiarize yourself with the JupyterLab interface. JupyterLab is a web-based interactive development environment. We'll be using Jupyter Notebooks (`.ipynb` files) within it. Notebooks are documents that can contain both runnable Python code (in "code cells") and explanatory text, images, and links (in "markdown cells"). This format is excellent for learning and experimentation.
+
+This interactive demo is recommended, a 60-second useful, short, introduction to JupyterLab for new users.
+
+++++
+<iframe 
+  src="https://demo.arcade.software/eF1CtDuuD4hKWspBmiYR?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true"
+  width="100%"
+  height="600px"
+  frameborder="0"
+  webkitallowfullscreen
+  mozallowfullscreen
+  allowfullscreen
+  allow="clipboard-write"
+
+</iframe>
+++++
+
+Please switch your focus to the "JupyterLab" tab, typically located to the right in your lab interface. You can adjust the width of this panel by dragging the divider if you need more space. Once in the JupyterLab tab, locate and open the notebook for this module: `02_Lllamastack_Inference_Basics.ipynb`. Follow the steps within the notebook to explore these basic inference capabilities hands-on! All further instructions for this section will be found inside that notebook.
 
 == Reference material:
+
 To help visualize the flow of information when interacting with Llama Stack, let's look at a couple of simple diagrams. These illustrate how your code, the Llama Stack client, the server, and the LLM model work together.
 
 First, here is the basic flow for a standard chat completion request:

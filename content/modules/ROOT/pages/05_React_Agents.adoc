@@ -1,6 +1,6 @@
 == Module 5: Exploring ReAct Agents and Tool Use
 
-In this final module, we delve into the exciting world of ReAct agents. Building on the basic agent concepts you've learned, ReAct (Reasoning and Acting) agents introduce a powerful loop of *Thought*, *Action* (using tools), and *Observation* that allows them to tackle more complex problems dynamically. Unlike simpler agents, ReAct agents can plan multi-step solutions and adapt their approach based on the results they get from using various tools.
+In this final module, we delve into the exciting world of ReAct agents. Building on the basic agent concepts you've learned, ReAct (Reasoning and Acting) agents introduce a powerful loop of *Thought*, *Action* (using tools), and *Observation* that allows them to tackle more complex problems dynamically. Unlike simpler agents, ReAct agents can plan multistep solutions and adapt their approach based on the results they get from using various tools.
 
 This module will showcase how Llama Stack facilitates building sophisticated agents capable of chaining tool use together to achieve goals.
 
@@ -9,7 +9,7 @@ By the end of this module, you will be able to:
 * Understand the core principles of the ReAct framework and its Reason-Act-Observe loop.
 * See how a ReAct agent combines step-by-step reasoning with tool execution.
 * Utilize both built-in and custom tools within a ReAct agent workflow.
-* Add and manage different models optimized for agentic capabilities within Llama Stack.
+* Add and manage different models optimized for Agentic capabilities within Llama Stack.
 * Analyze the detailed steps ("Chain of Thought") a ReAct agent takes to solve a problem.
 
 Ready to experience the power of agents that can reason and act?
@@ -19,7 +19,7 @@ This Module provides an overview of Agents and Tools within the Llama Stack fram
 
 === Reference Material
 
-ReAct agents employ a powerful iterative process to solve problems. This diagram visualizes the core Reason-Act-Observe loop that defines their behavior, allowing them to perform complex, multi-step tasks by dynamically planning and using tools based on prior observations.
+ReAct agents employ a powerful iterative process to solve problems. This diagram visualizes the core Reason-Act-Observe loop that defines their behavior, allowing them to perform complex, multistep tasks by dynamically planning and using tools based on prior observations.
 
 image::react_agent_loop.png[ReAct Agent Loop]
 
@@ -33,8 +33,8 @@ The diagram illustrates how the agent cycles through thinking (Thought), perform
 
 // There are several ways of conceptualizing or implementing agents within or alongside the core Llama Stack framework:
 
-// *   **"Regular" Agents:** Refer to agents built using the core Llama Stack Agent APIs. These agents are configured with a model, instructions, and a list of tools they can use. We will provide examples of configuring such `Agent` instances using the Llama Stack Python client.
-// *   **RAG Enhanced Agents (Agentic RAG):** These are specifically designed for **more complex queries** that necessitate multi-step reasoning, planning, or interaction with multiple data sources. It is described as an **abstraction of the `rag_tool`** within Llama Stack. This contrasts with "Basic RAG," which is for simpler queries. Building RAG-Enhanced Agents is a covered topic in the Llama Stack demos. In this view, RAG can be seen as a **"Knowledge Agent"** that utilizes retrieval tools.
+// *  **"Regular" Agents:** Refer to agents built using the core Llama Stack Agent APIs. These agents are configured with a model, instructions, and a list of tools they can use. We will provide examples of configuring such `Agent` instances using the Llama Stack Python client.
+// *   **RAG Enhanced Agents (Agentic RAG):** These are specifically designed for **more complex queries** that necessitate multistep reasoning, planning, or interaction with multiple data sources. It is described as an **abstraction of the `rag_tool`** within Llama Stack. This contrasts with "Basic RAG," which is for simpler queries. Building RAG-Enhanced Agents is a covered topic in the Llama Stack demos. In this view, RAG can be seen as a **"Knowledge Agent"** that utilizes retrieval tools.
 // *   **ReAct Agents:** There is a specific implementation class called `ReActAgent` available in the Llama Stack Python client library. This pattern intersperses reasoning steps performed by the language model with actions taken using tools [Conversation History]. The `ReActAgent` is instantiated with a client, model, and tools, and is used to create sessions and process turns.
 
 // === Agent Code Components and Steps

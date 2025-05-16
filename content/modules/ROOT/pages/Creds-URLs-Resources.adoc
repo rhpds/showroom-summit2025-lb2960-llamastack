@@ -18,13 +18,18 @@
 
 |===
 
+== Full Browser Options
+
+If you find yourself constrained by the *Showroom* User Interface you are using you can actually open each component in its own browser tab.
+
+
 
 [Attributes]
 |===
 
 | **Full Browser Tab Options**
+| link:https://{targethost}/showroom/modules/index.html[Lab Content^]
 | link:https://{targethost}:9443[Jupyter Lab^]
-| link:https://{targethost}:8443[Studio Code^]
 | link:https://{targethost}/tty-top[Terminal Session (Top)^]
 | link:https://{targethost}/tty-bottom[Terminal Session (Bottom)^]
 | link:https://llama-stack.readthedocs.io/en/latest[Llamastack Docs^]

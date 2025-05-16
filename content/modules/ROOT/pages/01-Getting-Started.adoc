@@ -151,7 +151,7 @@ If you want to see some command line example commands you can run, follow along 
 
 [IMPORTANT]
 ====
-Switch to the Terminal window for this section, as any long running commands will perisit via its `tmux` session, in case you get temporarily disconnected.
+Switch to the Terminal window for this section, as any long-running commands will persist via its `tmux` session, in case you get temporarily disconnected.
 ====
 . Let's start by installing the llama-stack-client
 +
@@ -232,4 +232,4 @@ Through practical exercises, you gained experience in:
 * **Performing basic chat completion:** Sending prompts to an LLM and receiving responses.
 * **Extracting structured data:** Using `response_format` and Pydantic models to get specific, structured information from the LLM's output, moving beyond simple text responses.
 
-This module provided a foundational understanding of interacting with LLMs via Llama Stack, demonstrating how straightforward it is to begin building Gen AI applications and prepare for more advanced concepts like RAG and Agents in subsequent sections.
+This module provided a foundational understanding of interacting with LLMs via Llama Stack, demonstrating how straightforward it is to begin building Gen-AI applications and prepare for more advanced concepts like RAG and Agents in subsequent sections.
