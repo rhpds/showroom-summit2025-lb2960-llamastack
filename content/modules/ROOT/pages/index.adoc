@@ -6,7 +6,7 @@ Welcome to this hands-on lab where we'll explore the exciting and evolving world
 
 Think of this lab as your first, or early, step into understanding how AI can be practically applied. We're not diving deep into complex AI theory or intricate Python programming. Instead, we're focusing on how Llama Stack provides a structured framework and essential components to build AI-powered tools. These tools can, for example, help analyze issues, retrieve information from technical documentation, or even suggest troubleshooting steps, complementing your existing Linux and OpenShift operational skills.
 
-But today our journey will be a fun trip built around a National Parks application taking basic but functional application elements built usingL lama Stack and exploring their patterns and approach. This will allow us to highlight _many but not all_ of the main features of Llama Stack, see how they contribute to the overall AI application architecture, and understand the value they bring without getting bogged down in starting from scratch.
+But today our journey will be a fun trip built around a National Parks application taking basic but functional application elements built using Llama Stack and exploring their patterns and approach. This will allow us to highlight _many but not all_ of the main features of Llama Stack, see how they contribute to the overall AI application architecture, and understand the value they bring without getting bogged down in starting from scratch.
 
 == What You Will Learn
 
@@ -23,6 +23,5 @@ By the end of this lab, you will have a foundational understanding of:
 ** *RAG (Retrieval Augmented Generation):* You'll learn about "Retrieval Augmented Generation." This is an architectural pattern that makes LLMs even more powerful for specific tasks, and Llama Stack provides the components to build this into your applications. Imagine an AI that doesn't just rely on its general knowledge, but can also look up information in a specific set of documents – like your company's internal knowledge base, system logs, or technical manuals – before answering a question. Llama Stack facilitates this RAG architecture, allowing the LLM to access relevant and up-to-date information, which is crucial for providing accurate answers in IT operations scenarios.
 
 ** *Agents (Agentic AI):* We'll introduce "AI Agents" and how Llama Stack serves as the platform for building and orchestrating them. An Agent is more than just a passive model; it's a system designed to understand a goal, make a plan, and use available tools (which can be other parts of your Llama Stack application or external APIs) to achieve that goal.
-
 
 No deep AI or Python programming experience is required for this lab. If you have some general development or scripting experience (like with Bash or Ansible), you'll find it helpful, but we'll guide you through the necessary steps and explain the concepts clearly. Our goal is to make these cutting-edge AI techniques, as implemented within Llama Stack, understandable and show their potential value in your operational world.
