@@ -233,14 +233,60 @@ curl -sS $LLAMA_STACK_SERVER/v1/inference/chat-completion \
 curl -sS $LLAMA_STACK_SERVER/v1/models -H "Content-Type: application/json" | jq -r '.data[].identifier'
 ----
 
+== Optional: Llama Stack Playground
+
+A Web UI, Llama Stack Playground, has been included with your lab. This will allow you to, graphically, chat with your LLM, and as you go through the lab interact with both the Llama Stack RAG and Agentic components.
+
+. In one of your terminals' set up the virtual env (venv) with the Streamlit python dependencies
++
+
+[NOTE]
+====
+Streamlit is an open-source Python framework that allows data scientists, AI Developers, etc to quickly build and deploy interactive web applications and dashboards with minimal front-end experience.
+====
++
+
+[source,sh,role=execute]
+----
+pip install -r ~/lab/assets/ui/requirements.txt 
+----
++
+
+.Sample Output
+[source,texinfo]
+----
+Collecting llama-stack>=0.2.1 (from -r /home/llama/lab/assets/ui/requirements.txt (line 1))
+  Obtaining dependency information for llama-stack>=0.2.1 from https://files.pythonhosted.org/packages/c1/7f/3caf93be63e96602225ef84afaf7d13bdf1758b782e6f58000aab8ff52d9/llama_stack-0.2.7-py3-none-any.whl.metadata
+  Downloading llama_stack-0.2.7-py3-none-any.whl.metadata (18 kB)
+Requirement already satisfied: llama-stack-client>=0.2.1 in ./venv/lib64/python3.12/site-packages (from -r /home/llama/lab/assets/ui/requirements.txt (line 2)) (0.2.7)
+
+...
+
+     Successfully uninstalled packaging-25.0
+Successfully installed altair-5.5.0 blinker-1.9.0 blobfile-3.0.0 cachetools-5.5.2 durationpy-0.10 filelock-3.18.0 fire-0.7.0 fsspec-2025.3.2 gitdb-4.0.12 gitpython-3.1.44 google-auth-2.40.1 huggingface-hub-0.31.4 jiter-0.10.0 kubernetes-32.0.1 llama-stack-0.2.7 lxml-5.4.0 narwhals-1.40.0 oauthlib-3.2.2 openai-1.79.0 packaging-24.2 pillow-11.2.1 protobuf-6.31.0 pyarrow-20.0.0 pyasn1-0.6.1 pyasn1-modules-0.4.2 pycryptodomex-3.23.0 pydeck-0.9.1 regex-2024.11.6 requests-oauthlib-2.0.0 rsa-4.9.1 smmap-5.0.2 streamlit-1.45.1 streamlit-option-menu-0.4.0 tenacity-9.1.2 tiktoken-0.9.0 toml-0.10.2 watchdog-6.0.0
+----
+
+. Start the Llama Stack Playground via `streamlit`, we'll run it in the background 
++
+
+[source,sh,role=execute]
+----
+nohup streamlit run ~/lab/assets/ui/app.py & 
+----
+
+. Now either open the rightmost Tab *Llama Stack Playground (after you deploy it)* and reload it or in your web browser open a link:https://{targethost}:8501/[new Browser Tab^]
+
+As you progress through the lab more and more of the Llama Stack playground will become available to you for exploration, ie after Module 3 you'll be able to explore the RAG functionality. 
+
 == Lab Summary: Getting Familiar with Llama Stack Basics
 
-In this initial lab module, you took your first steps with the Llama Stack framework, exploring fundamental concepts for interacting with Large Language Models (LLMs). You learned how Llama Stack simplifies connecting to and utilizing different models.
+In this initial lab module, you took your first steps with the Llama Stack framework, exploring fundamental concepts for running Large Language Models (LLMs). And setting up Llama Stack.
 
 Through practical exercises, you gained experience in:
 
-* **Initializing the Llama Stack client:** Connecting your Python code to the Llama Stack server environment.
+* **Pulling and running an LLM with ollama** Working with the Ollama LLM runtime
+* **Initializing the Llama Stack Server:** Connecting your Llama Stack Server to the LLM Runtime.
+* **Initializing the Llama Stack Client:** Connecting your Llama Stack Client to the Llama Stack Server
 * **Performing basic chat completion:** Sending prompts to an LLM and receiving responses.
-* **Extracting structured data:** Using `response_format` and Pydantic models to get specific, structured information from the LLM's output, moving beyond simple text responses.
 
-This module provided a foundational understanding of interacting with LLMs via Llama Stack, demonstrating how straightforward it is to begin building Gen-AI applications and prepare for more advanced concepts like RAG and Agents in subsequent sections.
+This module provided a foundational understanding of interacting with LLMs via Llama Stack, setting up both the Llama Stack Server and Client and doing basic inference.
