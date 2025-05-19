@@ -1,0 +1,24 @@
+== Module 6: Working with MCP Servers
+
+Welcome to the final core module of our Llama Stack lab! In this section, we introduce you to a pivotal concept for expanding your AI agents' capabilities: the **Model Context Protocol (MCP)**. MCP provides a standardized, plug-and-play way for your Llama Stack agents to interact seamlessly with external, specialized services, allowing them to access real-time data, perform domain-specific actions, and truly bridge the gap between AI and the real world.
+
+This module will demonstrate how Llama Stack empowers your agents to transcend their training data and interact with a diverse ecosystem of external services.
+
+By the end of this section, you will be able to:
+
+* **Understand MCP Servers:** Learn what MCP is and how it allows external services to expose their functionalities to Llama Stack agents.
+* **Run an MCP-enabled container:** Deploy a pre-built MCP server container that exposes external tools (like a weather API).
+* **Register MCP tools:** Register functionalities (e.g., `get_alerts`, `get_forecast`) from an MCP server with Llama Stack, making them available to agents.
+* **Utilize MCP tools with a Llama Stack Agent:** Observe how a Llama Stack agent can discover and use these newly registered MCP tools to answer questions requiring real-time or external data.
+
+Ready to unlock the full potential of your Llama Stack agents by connecting them to the vast world of external services?
+
+Open the `06_MCP_Servers.ipynb` notebook and follow along to empower your agents with Model Context Protocol capabilities!
+
+=== Reference Material
+
+The **Model Context Protocol (MCP)** is a powerful concept that allows Llama Stack agents to interact with external, specialized services. This diagram illustrates the typical flow of how an MCP server integrates with Llama Stack, exposing its capabilities as tools that your agents can dynamically discover and utilize.
+
+image::mcp_integration_flow_tb.png[MCP Integration Flow (Top-to-Bottom)]
+
+This visual shows the end-to-end process: from the external MCP Server providing its tool definitions, through Llama Stack's registration of these tools, to an agent making a dynamic tool call to that external service to retrieve data and then formulating a response for the user. The top-to-bottom layout is used here to ensure it fits better on the page. This seamless integration dramatically extends the real-world utility of your AI agents.

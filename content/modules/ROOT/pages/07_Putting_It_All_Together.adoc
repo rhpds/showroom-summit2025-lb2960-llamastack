@@ -1,0 +1,47 @@
+== Module 7: Putting it all together
+
+Welcome to the grand finale of our Llama Stack lab! Throughout this series, you've explored key concepts like fundamental Agents, the dynamic ReAct framework, the power of connecting to external services via MCP Servers, and leveraging internal knowledge with RAG.
+
+Now, it's time to integrate these building blocks and witness the synergy of the Llama Stack ecosystem in action. In this final module, you will bring together everything you've learned to build and run a sophisticated, multi-capability AI agent capable of interacting with diverse external services and utilizing a custom knowledge base. This is where you'll see how Llama Stack empowers you to create truly intelligent applications by seamlessly combining different functionalities and data sources.
+
+By the end of this module, you will be able to:
+
+* **Part A: Environment Preparation**
+    * Prepare your environment by launching and configuring necessary external services (MCP servers).
+    * Set up the components required for a multi-tool, RAG-enabled agent, including preparing a Vector Database.
+* **Part B: Agent Execution**
+    * Understand how to combine Llama Stack components (Agents, MCP, RAG) to build complex, multi-functional agents.
+    * Configure a Llama Stack agent to effectively utilize multiple `toolgroups` and a RAG knowledge base.
+    * Execute the agent and observe its decision-making process when handling complex queries that require coordinating multiple tools and knowledge sources.
+    * Appreciate the flexibility and power gained by integrating various Llama Stack features.
+
+Ready to see how all the pieces fit and unleash the potential of a truly integrated Llama Stack agent?
+
+
+=== Application Architecture Overview
+
+Before diving into the notebooks, let's quickly review the architecture of the Llama Stack environment you'll be working with in this final module. Understanding how the different components interact will help you appreciate the power of putting it all together.
+
+The setup you've prepared (or will prepare in Part A) consists of several key services working in concert:
+
+* **Ollama LLM:** Running as your local inference server (configured in a previous lab), this is where the large language model resides, providing the core reasoning capabilities for our agent.
+* **Llama Stack Server:** This is the central orchestrator (a container you deployed earlier), listening on `port 8321`. It manages agents, tools, models, and facilitates the communication between the user interface, the LLM, and external services.
+* **Model Context Protocol (MCP) Servers:** These are specialized services exposing external capabilities as tools:
+    * `mcp-weather`: Provides weather-related tools, typically running on `port 8005`.
+    * `mcp-googlemaps`: Offers tools for maps and location searches, typically running on `port 8006`.
+    * `mcp-parks-info`: Provides RAG-based information lookup for parks, typically running on `port 8007`.
+    These MCP servers are registered with the Llama Stack Server, making their tools discoverable by agents.
+* **User Interface (UI):** Although not the focus of these notebooks directly, a typical deployment would include a UI component (running on `port 8501`) from where the user interacts. This UI communicates with the Llama Stack Server, which then orchestrates the agent's actions, including calls to the LLM and MCP tools.
+
+
+Ready to see how all the pieces fit and unleash the potential of a truly integrated Llama Stack agent?
+
+=== Lab
+
+This final module is designed as a two-part hands-on experience within the notebooks.
+
+First, open the `07a_Putting_it_all_together_Prep.ipynb` notebook. Follow the instructions within to set up your environment, launch the necessary external services (MCP servers), register them with Llama Stack, and prepare your RAG knowledge base.
+
+Once your environment is fully prepared and verified, proceed to the `07b_Putting_it_all_together_Execution.ipynb` notebook. This notebook will guide you through configuring and running your sophisticated Llama Stack agent, allowing you to observe its capabilities as it solves problems by orchestrating external tools and accessing its knowledge base!
+
+

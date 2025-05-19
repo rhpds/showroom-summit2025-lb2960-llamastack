@@ -1,52 +1,27 @@
-= AI applications and LlamaStack: A practical workshop
-
-Welocme to the **AI applications and LlamaStack** Workshop
+= AI Applications and Llama Stack: A practical workshop
 
 == Overview
 
-In this workshop we will cover...
+Welcome to this hands-on lab where we'll explore the exciting and evolving world of AI applications including inference, Retrieval Augmented Generation (RAG), and Agentic AI. We'll specifically focus on how an open-source AI stack called *Llama Stack* simplifies the development process and provides a robust architecture for building powerful AI applications.
 
-== AI Application Architecture
+Think of this lab as your first, or early, step into understanding how AI can be practically applied. We're not diving deep into complex AI theory or intricate Python programming. Instead, we're focusing on how Llama Stack provides a structured framework and essential components to build AI-powered tools. These tools can, for example, help analyze issues, retrieve information from technical documentation, or even suggest troubleshooting steps, complementing your existing Linux and OpenShift operational skills.
 
+But today our journey will be a fun trip built around a National Parks application taking basic but functional application elements built using Llama Stack and exploring their patterns and approach. This will allow us to highlight _many but not all_ of the main features of Llama Stack, see how they contribute to the overall AI application architecture, and understand the value they bring without getting bogged down in starting from scratch.
 
+== What You Will Learn
 
-[#getting_started]
-== Getting Started with Your Environment
+By the end of this lab, you will have a foundational understanding of:
 
-=== Welcome to the Showroom Interface
+* *The Core Idea of an AI Stack like Llama Stack:* You'll see how Llama Stack brings together a collection of tools and libraries to streamline the creation of AI-driven applications, providing a clear architectural pattern.
 
-If you prefer to run each <TAB> as a full browser Tab then the links below enable that.
- 
-[Attributes]
-|===
-| **Full Browser Tab Options**
-| link:https://{targethost}/showroom/modules/index.html[Lab Content^]
-| link:https://{targethost}:9443[Jupyter Lab^]
-| link:https://{targethost}:8443[Studio Code^]
-| link:https://{targethost}/tty-top[Terminal Session (Top)^]
-| link:https://{targethost}/tty-bottom[Terminal Session (Bottom)^]
-| link:https://llama-stack.readthedocs.io/en/latest[Llamastack Docs^]
-|===
+* *Practical Application Development with Llama Stack:* You'll gain hands-on experience by working with a pre-existing code structure within the Llama Stack framework, focusing on understanding and modifying key parts rather than writing extensive new code.
 
+* *Key Architectural Components in Modern AI Applications (and Llama Stack's role):*
 
-== Testing arcade
-++++
-<iframe 
-  src="https://demo.arcade.software/KdRIAFvQcVRiZaEkuQy3?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" 
-  width="100%" 
-  height="600px" 
-  frameborder="0" 
-  allowfullscreen
-  muted>
-</iframe>
-++++
+** *LLM Providers:* We'll explore what "Large Language Model (LLM) Providers" are. Think of them as services that grant you access to powerful AI models capable of understanding and generating human-like text. A key architectural advantage of Llama Stack is its ability to seamlessly integrate with and manage multiple providers. This means your Llama Stack-built application isn't locked into a single option, offering flexibility in terms of capabilities, cost, and specific model strengths.
 
+** *RAG (Retrieval Augmented Generation):* You'll learn about "Retrieval Augmented Generation." This is an architectural pattern that makes LLMs even more powerful for specific tasks, and Llama Stack provides the components to build this into your applications. Imagine an AI that doesn't just rely on its general knowledge, but can also look up information in a specific set of documents – like your company's internal knowledge base, system logs, or technical manuals – before answering a question. Llama Stack facilitates this RAG architecture, allowing the LLM to access relevant and up-to-date information, which is crucial for providing accurate answers in IT operations scenarios.
 
+** *Agents (Agentic AI):* We'll introduce "AI Agents" and how Llama Stack serves as the platform for building and orchestrating them. An Agent is more than just a passive model; it's a system designed to understand a goal, make a plan, and use available tools (which can be other parts of your Llama Stack application or external APIs) to achieve that goal.
 
-
-
-
-|TIP Take a few moments to customize your environment. You'll be in it for the next 60, 7080 minutes and if you don't like the light theme on Jupiter labs or you wanna work with Visual Studio code or you wanna turn on the mode and you know what you're doing take a moment to customize it.
-
-Take a quick tour take your way through the tabs on your right, you can complete the entire lab solely in your primary tab on the Wright i.e. Jupiter labs. Your first Jupiter notebook will give you a few tips to how to use Jupiter notes if you've never used them before and we also have a reference document at the end.
-
+No deep AI or Python programming experience is required for this lab. If you have some general development or scripting experience (like with Bash or Ansible), you'll find it helpful, but we'll guide you through the necessary steps and explain the concepts clearly. Our goal is to make these cutting-edge AI techniques, as implemented within Llama Stack, understandable and show their potential value in your operational world.

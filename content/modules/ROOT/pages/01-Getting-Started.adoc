@@ -18,9 +18,13 @@ Let's dive into the world of Llama-Stack Server and get started with our first i
 
 In this lab, you will be setting up your own local Large Language Model (LLM) server using Ollama. This approach allows you to experiment with AI coding assistance without relying on external cloud services, giving you full control over your AI environment.
 
-Ollama provides a simple way to run various open-source large language models on your local machine. We have taken the libery to install ollama server for you and download a few models to save you time. 
+Ollama provides a simple way to run various open-source large language models on your local machine. We have taken the liberty to install ollama server for you and download a few models to save you time. 
 
-Let's do a quick walkthrough of our environment to understand what's available:
+Let's do a quick walkthrough of our environment to understand what's available. Switch to the *Terminals* Tab, selectable on the top right of your Interface.
+
+image::terminals.png[title='Terminals Tab', link=self, window=blank]
+
+
 
 . Run the `ollama list` command to display the models available locally:
 +
@@ -37,8 +41,7 @@ ollama list
 ----
 [llama@llamastack ~]$ ollama list
 NAME                 ID              SIZE      MODIFIED    
-granite3.2:8b                9bcb3335083f    4.9 GB    22 hours ago    
-llama3.2:3b-instruct-fp16    195a8c01d91e    6.4 GB    22 hours ago    
+granite3.2:8b        9bcb3335083f    4.9 GB    22 hours ago     
 ----
 
 . Let's pull down the "ollama pull llama3.2:3b-instruct-fp16" model with the `ollama pull` command:
@@ -74,11 +77,17 @@ success
 
 [source,sh,role=execute]
 ----
-ollama run llama3.2:3b-instruct-fp16 --keepalive --keepalive -1m
+ollama run llama3.2:3b-instruct-fp16 --keepalive -1m
 ----
 +
 
-* Ask the model a question or two, and type `/bye` or CTRL+D to exist the chat 
+* Ask the model a question or two, and type `/bye` or kbd:[CTRL+D] to exist the chat.
++
+
+[NOTE]
+====
+Exiting the chat session will *not* kill your `ollama run` process and at anytime you can confirm running models via `ollama ps`
+====
 
 
 
@@ -96,17 +105,17 @@ ollama run llama3.2:3b-instruct-fp16 --keepalive --keepalive -1m
 export LLAMA_STACK_MODEL="meta-llama/Llama-3.2-3B-Instruct"                  <1>
 export LLAMA_STACK_PORT=8321                                               <2>
 export LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT               <3>
-export LLAMA_SERVER_CONTAINER_IMAGE="docker.io/llamastack/distribution-ollama:0.2.5" <4>
+export LLAMA_SERVER_CONTAINER_IMAGE="docker.io/llamastack/distribution-ollama:0.2.7" <4>
 export CONTAINER_NAME="llamastack-ollama"             <5> 
 export OLLAMA_PORT=11434                                                   <6>
 ----
 +
-<1> Inference Model - the model we will talk to, note Meta's naming is different from `ollama`
-<2> LLAMA_STACK_PORT=8321 - the port the llamastack serve rlistens on, this can be local or remote
-<3> LLAMA_STACK_SERVER=http://localhost:$LLAMA_STACK_PORT - where you application will connect to
-<4> LLAMA_SERVER_CONTAINER_IMAGE="llamastack/distribution-ollama:0.2.0"
-  * The llamastack version including the type of llm server (`ollama`)
-<5> CONTAINER_NAME="llamastack-ollama"   
+<1> `LLAMA_STACK_MODEL`: the Inference Model,the model we will talk to, note Meta's naming is different from `ollama`:
+<2> `LLAMA_STACK_PORT`: the TCP port the llamastack server listens on
+<3> `LLAMA_STACK_SERVER`: Llama Stack Server API endpoint, where clients and apps connect to
+<4> `LLAMA_SERVER_CONTAINER_IMAGE`: Container image
+  * The Llama Stack version including the type of llm server (`ollama`)
+<5> `CONTAINER_NAME`: Multiple Llama Stack servers exist for different LLM runtimes (`ollama`, `vllm`, etc)   
 
 . Run the container using the `podman run` command: (If you are a docker user, just use `docker run`)
 +
@@ -121,7 +130,7 @@ podman run -d \
     --env OLLAMA_URL=http://localhost:$OLLAMA_PORT
 ----
   
-. Let's watch the container load and see that it is running succesfully 
+. Let's watch the container load and see that it is running successfully 
 +
 [source,sh,role=execute]
 ----
@@ -151,7 +160,7 @@ If you want to see some command line example commands you can run, follow along 
 
 [IMPORTANT]
 ====
-Switch to the Terminal window for this section, as any long running commands will perisit via its `tmux` session, in case you get temporarily disconnected.
+Switch to the Terminal window for this section, as any long-running commands will persist via its `tmux` session, in case you get temporarily disconnected. Remember if you have running processes in both terminals you can exit the `ollama` session with `/bye` or kbd:[Ctrl+d] without interrupting model serving.
 ====
 . Let's start by installing the llama-stack-client
 +
@@ -160,15 +169,17 @@ Switch to the Terminal window for this section, as any long running commands wil
 ----
 source ~/venv/bin/activate
 pip install --upgrade pip
-pip install llama-stack-client==0.2.5
+pip install llama-stack-client==0.2.7
 ----
 
-. Point your `llama-stack-client` at your local llama-stack server:
+. Point your `llama-stack-client` at your local llama-stack server, either using `--endpoint $LLAMA_STACK_SERVER` if `LLAMA_STACK_SERVER` is defined or `--endpoint http://localhost:8321` if not:
 +
 [source,sh,role=execute]
 ----
-llama-stack-client configure --endpoint $LLAMA_STACK_SERVER
+llama-stack-client configure --endpoint http://localhost:8321
 ----
++
+Hit kbd:[Return] when prompted for an API Key
 
 . List the models that are currently served by the Llama-stack server 
 +
@@ -232,4 +243,4 @@ Through practical exercises, you gained experience in:
 * **Performing basic chat completion:** Sending prompts to an LLM and receiving responses.
 * **Extracting structured data:** Using `response_format` and Pydantic models to get specific, structured information from the LLM's output, moving beyond simple text responses.
 
-This module provided a foundational understanding of interacting with LLMs via Llama Stack, demonstrating how straightforward it is to begin building Gen AI applications and prepare for more advanced concepts like RAG and Agents in subsequent sections.
+This module provided a foundational understanding of interacting with LLMs via Llama Stack, demonstrating how straightforward it is to begin building Gen-AI applications and prepare for more advanced concepts like RAG and Agents in subsequent sections.
