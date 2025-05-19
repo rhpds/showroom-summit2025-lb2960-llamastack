@@ -235,12 +235,13 @@ curl -sS $LLAMA_STACK_SERVER/v1/models -H "Content-Type: application/json" | jq 
 
 == Lab Summary: Getting Familiar with Llama Stack Basics
 
-In this initial lab module, you took your first steps with the Llama Stack framework, exploring fundamental concepts for interacting with Large Language Models (LLMs). You learned how Llama Stack simplifies connecting to and utilizing different models.
+In this initial lab module, you took your first steps with the Llama Stack framework, exploring fundamental concepts for running Large Language Models (LLMs). And setting up Llamastack.
 
 Through practical exercises, you gained experience in:
 
-* **Initializing the Llama Stack client:** Connecting your Python code to the Llama Stack server environment.
+* **Pulling and running an LLM with ollama** Working with the Ollama LLM runtime
+* **Initializing the Llama Stack Server:** Connecting your Llama Stack Server to the LLM Runtime.
+* **Initializing the Llama Stack Client:** Connecting your Llama Stack Client to the Llama Stack Server
 * **Performing basic chat completion:** Sending prompts to an LLM and receiving responses.
-* **Extracting structured data:** Using `response_format` and Pydantic models to get specific, structured information from the LLM's output, moving beyond simple text responses.
 
-This module provided a foundational understanding of interacting with LLMs via Llama Stack, demonstrating how straightforward it is to begin building Gen-AI applications and prepare for more advanced concepts like RAG and Agents in subsequent sections.
+This module provided a foundational understanding of interacting with LLMs via Llama Stack, setting up both the Llama Stack Server and Client and doing basic inference.
