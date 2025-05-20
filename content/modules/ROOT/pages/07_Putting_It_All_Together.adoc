@@ -42,6 +42,8 @@ This final module is designed as a two-part hands-on experience within the noteb
 
 First, open the `07a_Putting_it_all_together_Prep.ipynb` notebook. Follow the instructions within to set up your environment, launch the necessary external services (MCP servers), register them with Llama Stack, and prepare your RAG knowledge base.
 
-Once your environment is fully prepared and verified, proceed to the `07b_Putting_it_all_together_Execution.ipynb` notebook. This notebook will guide you through configuring and running your sophisticated Llama Stack agent, allowing you to observe its capabilities as it solves problems by orchestrating external tools and accessing its knowledge base!
+Once your environment is fully prepared and verified, proceed to the `08_Bonus_Lab_Putting_it_all_Together.ipynb` notebook. This notebook will guide you through configuring and running your sophisticated Llama Stack agent, allowing you to observe its capabilities as it solves problems by orchestrating external tools and accessing its knowledge base!
+
+As a bonus you can try your hand at Prompt Engineering and try your hand at re-writing our ReAct prompt to be better.
 
 
